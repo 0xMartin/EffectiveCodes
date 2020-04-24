@@ -42,7 +42,7 @@ public class App extends JFrame {
     }
 
     private void createUIComponents() {
-        this.table1 = new CustomTable(new String[]{"Prvek","Slova"}, 0);
+        this.table1 = new CustomTable(new String[]{"Znak","Slova"}, 0);
         this.table2 = new CustomTable(new String[]{"Znak", "Pravděpodobnost"}, 0);
     }
 
