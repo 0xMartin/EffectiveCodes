@@ -1,4 +1,5 @@
 import javax.swing.*;
+import javax.swing.tree.TreeNode;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
@@ -43,7 +44,6 @@ public class App extends JFrame {
     private void createUIComponents() {
         this.table1 = new CustomTable(new String[]{"Prvek","Slova"}, 0);
         this.table2 = new CustomTable(new String[]{"Znak", "Pravděpodobnost"}, 0);
-        this.jPanelTreeView = new BinTreePainter();
     }
 
     public void init() {
@@ -73,9 +73,6 @@ public class App extends JFrame {
                 return;
             }
 
-            //vykresli binarni strom kodu
-            ((BinTreePainter)jPanelTreeView).paintTree(code);
-
             for (CodeWord n : code) {
                 //tabulka znaku a k nim prirazenych kodovych slov
                 ((CustomTable) table1).addRow(new String[]{n.character + "", n.code});
@@ -85,6 +82,7 @@ public class App extends JFrame {
 
             //zakoduje vstupni text dle kodovych slov
             textAreaOutput.setText(effCodeAlg.getCodedText());
+            textAreaOutput.setToolTipText(textAreaOutput.getText().length()+" bits");
 
             //vypocita a vypise prumernou delku kodoveho slova
             jLabelAvgLength.setText(String.format("%.3f",effCodeAlg.getAvgCodeLength()) +" bit ");
@@ -102,7 +100,7 @@ public class App extends JFrame {
             e.printStackTrace();
         }
         //run application
-        App app = new App("Effective Codes", 760, 550);
+        App app = new App("Efektivní kódy", 700, 550);
         app.init();
         app.setVisible(true);
     }
