@@ -46,7 +46,7 @@ public class HuffmanAlgorithm extends EffectiveCodeAlghoritm {
             return;
         }
 
-        //uzly reprezentujici znaky se usporadaji sestupne podle pravdepodopnosti vyskytu v textu
+        //kodova slova usporadaji sestupne podle pravdepodopnosti vyskytu jejich prirazenych znaku
         Arrays.sort(codeWords, new Comparator<CodeWord>() {
             @Override
             public int compare(CodeWord n1, CodeWord n2) {
@@ -54,15 +54,15 @@ public class HuffmanAlgorithm extends EffectiveCodeAlghoritm {
             }
         });
 
-        //uzely s druhou nejmensi a nejmensi pravdepodobnosti
+        //kodova slova s druhou nejmensi a nejmensi pravdepodobnosti vyskytu
         CodeWord higher = codeWords[codeWords.length-2];
         CodeWord lower = codeWords[codeWords.length-1];
 
         if(codeWords.length > 2) {
-            //potomek dvou uzlu s nejmensi pravdepodobnosti
+            //potomek dvou kodovych slov s nejmensi pravdepodobnosti
             CodeWord child = new CodeWord('#', higher.probability + lower.probability);
 
-            //vytvoreni kopie pole, ve kterem jsou dva uzly s nejmensi pravdepodobnosti na hrazeni jejich potomkem
+            //vytvoreni kopie pole, ve kterem jsou dve kodove slova s nejmensi pravdepodobnosti nahrazeny jejich potomkem
             CodeWord[] reduced = new CodeWord[codeWords.length - 1];
             System.arraycopy(codeWords, 0, reduced, 0, codeWords.length - 2);
             reduced[codeWords.length - 2] = child;
@@ -70,12 +70,12 @@ public class HuffmanAlgorithm extends EffectiveCodeAlghoritm {
             //rekurze
             alghoritm(reduced);
 
-            //kodove znaky potomka jsou prirazeny rodicovskym uzlum
+            //kodove znaky potomka jsou prirazeny rodicovskym kodovym slovum
             higher.code += child.code;
             lower.code += child.code;
         }
 
-        //priradeni kodovych znaku dvou nejmensim uzlum
+        //priradeni kodovych znaku
         higher.code += '0';
         lower.code += '1';
     }

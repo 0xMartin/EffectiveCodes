@@ -37,7 +37,7 @@ public class ShannonFanoAlgorithm extends EffectiveCodeAlghoritm{
             );
         }
 
-        //uzly reprezentujici znaky se usporadaji sestupne podle pravdepodopnosti vyskytu v textu
+        //kodova slova usporadaji sestupne podle pravdepodopnosti vyskytu jejich prirazenych znaku
         Arrays.sort(super.result, new Comparator<CodeWord>() {
             @Override
             public int compare(CodeWord n1, CodeWord n2) {
