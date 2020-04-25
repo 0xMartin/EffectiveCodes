@@ -82,7 +82,14 @@ public class App extends JFrame {
 
             //zakoduje vstupni text dle kodovych slov
             textAreaOutput.setText(effCodeAlg.getCodedText());
-            textAreaOutput.setToolTipText(textAreaOutput.getText().length()+" bits");
+
+            //pocet bitu
+            int count = 0;
+            for(int i = 0; i < textAreaOutput.getText().length(); i++){
+                char c = textAreaOutput.getText().charAt(i);
+                count += c == '1' || c == '0' ? 1 : 0;
+            }
+            textAreaOutput.setToolTipText(count+" bitu");
 
             //vypocita a vypise prumernou delku kodoveho slova
             jLabelAvgLength.setText(String.format("%.3f",effCodeAlg.getAvgCodeLength()) +" bit ");

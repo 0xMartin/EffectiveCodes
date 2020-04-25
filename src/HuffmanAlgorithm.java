@@ -9,15 +9,22 @@ public class HuffmanAlgorithm extends EffectiveCodeAlghoritm {
             return false;
         }
 
-        if(text.length() == 0){
+        super.lastText = text;
+
+        if(text.length() == 0) {
             super.result = null;
             return true;
         }
 
-        super.lastText = text;
-
         //znaky, ktere se nachazeji ve vstupnim textu
         Character[] chars = EffectiveCodeAlghoritm.getIncludedChars(text);
+
+        //pokud kod obsahuje jen jeden znak
+        if(chars.length == 1) {
+            super.result = new CodeWord[]{new CodeWord(text.charAt(0), 1.0)};
+            super.result[0].code = "0";
+            return true;
+        }
 
         //vypocet pravdepodobnosti vyskytu jednotlivych znaku
         super.result = new CodeWord[chars.length];
