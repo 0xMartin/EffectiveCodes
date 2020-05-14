@@ -9,5 +9,5 @@ Program je určen pro kódovanými textu pomocí metody efektivního kódovaní.
 
 <img src="https://github.com/0xMartin/EffectiveCodes/blob/master/img/img2.PNG" width=70%>
 
-## Author
+## Autor
 * Martin Krčma
